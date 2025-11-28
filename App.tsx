@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { BankRecord, BookRecord, MatchStatus, ReconResult, DashboardStats } from './types';
 import { parseBankCSV, parseBookCSV } from './utils/parser';
 import { reconcileData } from './services/reconciliation';
@@ -52,8 +52,6 @@ const StatCard = ({ title, value, subtext, color = "blue" }: { title: string, va
 );
 
 const App = () => {
-  const [bankData, setBankData] = useState<BankRecord[]>([]);
-  const [bookData, setBookData] = useState<BookRecord[]>([]);
   const [results, setResults] = useState<ReconResult[]>([]);
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [activeTab, setActiveTab] = useState<'ALL' | 'MATCHED' | 'MISMATCH' | 'MISSING'>('ALL');
@@ -63,9 +61,8 @@ const App = () => {
     // Load default data on mount
     const bank = parseBankCSV(BANK_CSV_DATA);
     const book = parseBookCSV(BOOK_CSV_DATA);
-    setBankData(bank);
-    setBookData(book);
     
+    // Perform reconciliation immediately
     const { results: res, stats: st } = reconcileData(bank, book);
     setResults(res);
     setStats(st);
