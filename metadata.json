@@ -1,0 +1,5 @@
+{
+  "name": "FleetCard Reconciler",
+  "description": "An intelligent financial reconciliation dashboard that automatically matches FleetCard bank statements with General Ledger (GL) book records to identify discrepancies, missing entries, and amount mismatches.",
+  "requestFramePermissions": []
+}
