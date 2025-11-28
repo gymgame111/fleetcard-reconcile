@@ -109,7 +109,9 @@ const App = () => {
         
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">FleetCard Reconciliation</h1>
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+            {import.meta.env?.VITE_APP_TITLE || 'FleetCard Reconciliation'}
+          </h1>
           <p className="text-gray-500 mt-1">Automated matching of Bank Statements vs GL Records</p>
         </div>
 
